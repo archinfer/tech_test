@@ -1,5 +1,25 @@
 The solution takes csv file and converts them to a nested JSON file with tree structure.
 
+### Folder Structure
+
+```
+├──app
+|   ├──__init__.py
+|   └──code_csv_json.py
+├──test
+|   ├──__init__.py
+|   └──test_code.py
+├──data
+|   ├──data.csv
+|   └──invalid_df.csv
+├──logs
+|   └──app.log
+├──output
+|   └──output.json
+├──requirements.txt
+└──README.md
+```
+
 ### Language
 
 The solution is written in Python 3.8.10.

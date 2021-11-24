@@ -172,15 +172,24 @@ def append_child_to_parent(no_child, row, root):
     for i in range(no_child):
         if (i==0):
             root.child(row.iloc[5,0],row.iloc[4,0],row.iloc[6,0])
-        else:
+            
+        elif (i<=2):
             child_found = [c for c in root.children if c.label == row.iloc[(i*3)+1,0]]
             if not child_found:
-                #if child node doesnt exist for parent, return -1 node to append the child into
                 child_found = [c for c in root.children if c.label == row.iloc[(i*3)-2,0]]
-                #append child node to the returned parent node, used for nesting child-parent
                 child_found[-1].children[-1].child(row.iloc[(i*3)+5,0],row.iloc[(i*3)+4,0],row.iloc[(i*3)+6,0])
             else:
                 child_found[0].child(row.iloc[(i*3)+5,0],row.iloc[(i*3)+4,0],row.iloc[(i*3)+6,0])
+                
+        else:
+            for j in range(i-2):
+                if(j==0):
+                    child_found = [c for c in root.children if c.label == row.iloc[4+(j*3),0]]
+                else:
+                    child_found = [c for c in child_found[-1].children if c.label == row.iloc[4+(j*3),0]]
+            child_found = [c for c in child_found[-1].children if c.label == row.iloc[(i*3)-2,0]]  
+
+            child_found[-1].children[-1].child(row.iloc[(i*3)+5,0],row.iloc[(i*3)+4,0],row.iloc[(i*3)+6,0])
 
 def write_to_disk(json_file):
     """Writes the json to a .json file on disk
