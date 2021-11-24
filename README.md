@@ -17,6 +17,7 @@ The solution takes csv file and converts them to a nested JSON file with tree st
 ├──output
 |   └──output.json
 ├──requirements.txt
+├──dockerfile
 └──README.md
 ```
 
